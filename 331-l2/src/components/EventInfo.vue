@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-<div class="event-class">
+  <div class="event-class">
     <div class="event-info">
       <h3>Category: {{ event.category }}</h3>
       <h3>Organizer: {{ event.organizer }}</h3>

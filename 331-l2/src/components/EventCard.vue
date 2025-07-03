@@ -17,7 +17,8 @@ defineProps<{
 //   petsAllowed: true,
 //   organizer: 'Kat Laydee'
 // })
-// </script>
+//
+</script>
 
 <template>
   <div class="event-class">
