@@ -9,7 +9,7 @@ const events = ref<Event[]>
 
 onMounted(() => {
   axios
-    .get('[your mock server url]')
+    .get('https://my-json-server.typicode.com/Soulriw/db-02/events')
     .then((response) => {
       console.log(response.data)
     })
