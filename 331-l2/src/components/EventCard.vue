@@ -30,6 +30,7 @@ defineProps<{
 
 <style scoped>
 .event-card {
+  text-align: right;
   padding: 20px;
   width: 250px;
   cursor: pointer;
