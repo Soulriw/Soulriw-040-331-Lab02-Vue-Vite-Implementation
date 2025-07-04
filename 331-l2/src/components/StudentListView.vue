@@ -19,7 +19,7 @@ onMounted(() => {
 
 <template>
   <h1>Student Directory</h1>
-  
+
   <div class="students">
     <div class="student-grid">
       <StudentCard v-for="student in students" :key="student.id" :student="student" />

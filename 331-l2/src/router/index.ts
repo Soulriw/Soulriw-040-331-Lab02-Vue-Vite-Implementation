@@ -19,8 +19,8 @@ const router = createRouter({
     {
       path: '/students',
       name: 'Students',
-      component: StudentListView
-    }
+      component: StudentListView,
+    },
   ],
 })
 
