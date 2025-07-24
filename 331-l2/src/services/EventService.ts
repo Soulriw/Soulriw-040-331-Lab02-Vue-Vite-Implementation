@@ -15,5 +15,5 @@ export default {
   },
   getEvent(id: number) {
     return apiClient.get('/events/' + id)
-  }
+  },
 }

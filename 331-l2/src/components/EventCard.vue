@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Event } from '@/types'
+import { type Event } from '@/types'
 
 defineProps<{
   event: Event
@@ -16,17 +16,15 @@ defineProps<{
 //   petsAllowed: true,
 //   organizer: 'Kat Laydee'
 // })
-
 </script>
 
 <template>
-  <RouterLink class="event-link" :to="{ name: 'event-detail-view', params: { id: event.id}}">
-      <div class="event-card">
-        <h2>{{ event.title }}</h2>
-        <span>@{{ event.time }} on {{ event.date }}</span>
-      </div>
+  <RouterLink class="event-link" :to="{ name: 'event-detail-view', params: { id: event.id } }">
+    <div class="event-card">
+      <h2>{{ event.title }}</h2>
+      <span>@{{ event.time }} on {{ event.date }}</span>
+    </div>
   </RouterLink>
-
 </template>
 
 <style scoped>
