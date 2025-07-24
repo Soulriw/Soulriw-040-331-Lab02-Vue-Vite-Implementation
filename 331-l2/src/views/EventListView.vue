@@ -8,7 +8,7 @@ import EventService from '@/services/EventService'
 const events = ref<Event[] | null>(null)
 const totalEvents = ref(0)
 const hasNextPage = computed(() => {
-  const totalPages = Math.ceil(totalEvents.value / 2)
+  const totalPages = Math.ceil(totalEvents.value / pageSize.value)
   return page.value < totalPages 
 })
 
@@ -16,14 +16,19 @@ const props = defineProps({
   page: {
     type: Number,
     required: true
+  },
+  size: {
+    type: Number,
+    default: 2
   }
 })
 const page = computed(() => props.page)
+const pageSize = computed(() => props.size)
 
 onMounted(() => {
   watchEffect(() => {
     events.value = null
-        EventService.getEvents(2, page.value)
+        EventService.getEvents(pageSize.value, page.value)
       .then((response) => {
         events.value = response.data
         totalEvents.value = response.headers['x-total-count']
@@ -44,7 +49,16 @@ onMounted(() => {
 
 <template>
   <h1>Events For Good</h1>
-  <!-- new element -->
+  
+  <div class="page-size-selector">
+    <label for="page-size">Events per page: </label>
+    <select id="page-size" :value="pageSize" @change="updatePageSize">
+      <option value="2">2</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+  </div>
 
   <div class="event">
     <div class="event-card">
@@ -56,12 +70,26 @@ onMounted(() => {
     </div>
 
     <div class="pagination">
-      <RouterLink id="page-prev" :to="{ name: 'event-list-view', query: { page: page - 1 } }" rel="prev" v-if="page != 1">&#60; Prev Page</RouterLink>
-      <RouterLink id="page-next" :to="{ name: 'event-list-view', query: { page: page + 1 } }" rel="next" v-if="hasNextPage">Next Page &#62;</RouterLink>
+      <RouterLink id="page-prev" :to="{ name: 'event-list-view', query: { page: page - 1, size: pageSize } }" rel="prev" v-if="page != 1">&#60; Prev Page</RouterLink>
+      <RouterLink id="page-next" :to="{ name: 'event-list-view', query: { page: page + 1, size: pageSize } }" rel="next" v-if="hasNextPage">Next Page &#62;</RouterLink>
     </div>
 
   </div>
 </template>
+
+<script lang="ts">
+export default {
+  methods: {
+    updatePageSize(event: any) {
+      const newSize = parseInt(event.target.value)
+      this.$router.push({ 
+        name: 'event-list-view', 
+        query: { page: 1, size: newSize } 
+      })
+    }
+  }
+}
+</script>
 
 <style scoped>
 .event {
