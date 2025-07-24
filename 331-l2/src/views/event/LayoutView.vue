@@ -20,10 +20,14 @@
                 event.value = response.data
             })
             .catch((error) => {
-                router.push({
-                    name: '404-resource-view',
-                    params: { resource: 'event' }
-                })
+                if (error.respose && error.response.status === 404) {
+                    router.push({
+                        name: '404-resource-view',
+                        params: { resource: 'event' }
+                    })
+                } else {
+                    router.push({ name: 'network-error-view' })
+                }
             })
     })
 </script>
