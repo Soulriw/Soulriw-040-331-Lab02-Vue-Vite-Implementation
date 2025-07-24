@@ -9,6 +9,7 @@ import StudentListView from '@/components/StudentListView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import NetworkErrorView from '@/views/NetworkErrorView.vue'
 import nProgress from 'nprogress'
+import { useEventStore } from '@/stores/event'
 import EventService from '@/services/EventService'
 
 const router = createRouter({
@@ -40,18 +41,18 @@ const router = createRouter({
       props: true,
       beforeEnter: (to) => {
         const id = parseInt(to.params.id as string)
+        const eventStore = useEventStore()
         return EventService.getEvent(id)
           .then((response) => {
-            // need to setup data for the event
-          })
-          .catch((error) => {
+            eventStore.setEvent(response.data)
+          }).catch((error) => {
             if (error.response && error.response.status === 404) {
               return {
                 name: '404-resource-view',
-                params: { resource: 'event' },
+                params: { resource: 'event' }
               }
             } else {
-              return { name: 'network-error-view'}
+              return { name: 'network-error-view' }
             }
           })
       },
