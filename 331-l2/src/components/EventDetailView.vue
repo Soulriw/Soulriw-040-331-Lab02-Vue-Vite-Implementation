@@ -28,3 +28,5 @@
         <p>{{ event.description }}</p>
     </div>
 </template>
+
+// https://my-json-server.typicode.com/Soulriw/db-02/events?_limit=2&_page=1
