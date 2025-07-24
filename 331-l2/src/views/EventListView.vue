@@ -27,7 +27,6 @@ const pageSize = computed(() => props.size)
 
 onMounted(() => {
   watchEffect(() => {
-    events.value = null
     EventService.getEvents(pageSize.value, page.value)
       .then((response) => {
         events.value = response.data
@@ -52,7 +51,7 @@ onMounted(() => {
   <div class="page-size-selector">
     <label for="page-size">Events per page: </label>
     <select id="page-size" :value="pageSize" @change="updatePageSize">
-      <option value="2">2</option>
+      <option value="3">3</option>
       <option value="5">5</option>
       <option value="10">10</option>
       <option value="20">20</option>
