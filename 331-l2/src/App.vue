@@ -10,10 +10,10 @@ const { message } = storeToRefs(store)
   <div class="text-center font-sans text-gray-700 antialias">
     <header>
       <div id="flashMessage" class="animate-fade" v-if="message">
-        <h4>{{ message }}</h4>
+        <h4 class="text-xl">{{ message }}</h4>
       </div>
       <div class="wrapper">
-        <nav class=""py-6>
+        <nav class="py-[30px]">
           <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'event-list-view' }">Event</RouterLink> |
           <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'about' }">About</RouterLink> |
           <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'Students' }">Students</RouterLink>
@@ -26,26 +26,7 @@ const { message } = storeToRefs(store)
 </template>
 
 <style>
-nav {
-  padding: 30px;
-}
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-
-h2 {
-  font-size: 20px;
-}
-
-#flashMessage {
-  animation: yellofade 3s ease-in-out;
-}
 </style>
 
 <!-- https://my-json-server.typicode.com/Soulriw/db-02/events -->

@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <div class="event-class">
-    <div class="event-info">
+    <div class="p-5 w-[250px] cursor-pointer border border-[#39495c] mb-[18px] text-right hover:scale-[1.01] hover:shadow-sp">
       <h3>Category: {{ event.category }}</h3>
       <h3>Organizer: {{ event.organizer }}</h3>
     </div>
@@ -16,17 +16,5 @@ defineProps<{
 </template>
 
 <style scoped>
-.event-info {
-  padding: 20px;
-  width: 250px;
-  cursor: pointer;
-  border: 1px solid #39495c;
-  margin-bottom: 18px;
-  text-align: right;
-}
 
-.event-info:hover {
-  transform: scale(1.01);
-  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
-}
 </style>

@@ -67,12 +67,13 @@ onMounted(() => {
       <EventInfo v-for="event in events" :key="`info-${event.id}`" :event="event" />
     </div> -->
 
-    <div class="pagination">
+    <div class="pagination flex">
       <RouterLink
         id="page-prev"
         :to="{ name: 'event-list-view', query: { page: page - 1, size: pageSize } }"
         rel="prev"
         v-if="page != 1"
+        class="flex-1 no-underline text-[#2c3e50] text-left"
         >&#60; Prev Page</RouterLink
       >
       <RouterLink
@@ -80,6 +81,7 @@ onMounted(() => {
         :to="{ name: 'event-list-view', query: { page: page + 1, size: pageSize } }"
         rel="next"
         v-if="hasNextPage"
+        class="flex-1 no-underline text-[#2c3e50] text-right"
         >Next Page &#62;</RouterLink
       >
     </div>
@@ -102,17 +104,4 @@ export default {
 
 <style scoped>
 
-.pagination a {
-  flex: 1;
-  text-decoration: none;
-  color: #2c3e50;
-}
-
-#page-prev {
-  text-align: left;
-}
-
-#page-next {
-  text-align: right;
-}
 </style>
