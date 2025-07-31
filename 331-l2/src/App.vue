@@ -2,12 +2,6 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { useMessageStore } from '@/stores/message'
 import { storeToRefs } from 'pinia'
-import { inject } from '@vercel/analytics'
-import { injectSpeedInsights } from '@vercel/speed-insights'
-
-// Initialize analytics
-inject()
-injectSpeedInsights()
 
 const store = useMessageStore()
 const { message } = storeToRefs(store)
