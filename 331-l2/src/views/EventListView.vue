@@ -58,14 +58,14 @@ onMounted(() => {
     </select>
   </div>
 
-  <div class="event">
+  <div class="flex flex-col items-center">
     <div class="event-card">
       <EventCard v-for="event in events" :key="event.id" :event="event" />
     </div>
 
-    <div class="event-info">
+    <!-- <div class="event-info">
       <EventInfo v-for="event in events" :key="`info-${event.id}`" :event="event" />
-    </div>
+    </div> -->
 
     <div class="pagination">
       <RouterLink
@@ -101,11 +101,6 @@ export default {
 </script>
 
 <style scoped>
-.event {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 .pagination a {
   flex: 1;
