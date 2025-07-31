@@ -5,7 +5,6 @@ import { storeToRefs } from 'pinia'
 
 const store = useEventStore()
 const { event } = storeToRefs(store)
-
 </script>
 
 <template>

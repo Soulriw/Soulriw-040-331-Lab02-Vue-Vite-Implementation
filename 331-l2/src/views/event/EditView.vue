@@ -4,7 +4,6 @@ import { type Event } from '@/types'
 import { useMessageStore } from '@/stores/message'
 import { useRouter } from 'vue-router'
 
-
 const props = defineProps<{
   event: Event
   id: String
@@ -25,5 +24,4 @@ const editEvent = () => {
 <template>
   <p>Edit event here</p>
   <button @click="editEvent">Edit</button>
-
 </template>
